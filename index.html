@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advertisement Experiment</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 800px;
+    }
+
+    video {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h2>Advertisement Viewing</h2>
+  <p>
+    Please watch the following advertisement carefully.
+    The questionnaire will appear after the video finishes.
+  </p>
+
+  <!-- Video -->
+  <video id="adVideo" controls>
+    <source src="SCfair - trial C.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Survey -->
+  <div id="survey" style="display:none;">
+    <h3>Questionnaire</h3>
+
+    <div class="question">
+      <p>1. How persuasive did you find this advertisement?</p>
+      <label><input type="radio" name="q1"> Not persuasive at all</label><br>
+      <label><input type="radio" name="q1"> Slightly persuasive</label><br>
+      <label><input type="radio" name="q1"> Moderately persuasive</label><br>
+      <label><input type="radio" name="q1"> Very persuasive</label><br>
+      <label><input type="radio" name="q1"> Extremely persuasive</label>
+    </div>
+
+    <div class="question">
+      <p>2. How clear was the message of the advertisement?</p>
+      <label><input type="radio" name="q2"> Very unclear</label><br>
+      <label><input type="radio" name="q2"> Somewhat unclear</label><br>
+      <label><input type="radio" name="q2"> Neutral</label><br>
+      <label><input type="radio" name="q2"> Clear</label><br>
+      <label><input type="radio" name="q2"> Very clear</label>
+    </div>
+
+    <div class="question">
+      <p>3. How likely are you to engage with the advertised product or service?</p>
+      <label><input type="radio" name="q3"> Very unlikely</label><br>
+      <label><input type="radio" name="q3"> Unlikely</label><br>
+      <label><input type="radio" name="q3"> Neutral</label><br>
+      <label><input type="radio" name="q3"> Likely</label><br>
+      <label><input type="radio" name="q3"> Very likely</label>
+    </div>
+
+    <button>Submit</button>
+  </div>
+
+  <script>
+    const video = document.getElementById("adVideo");
+    const survey = document.getElementById("survey");
+
+    video.addEventListener("ended", function () {
+      survey.style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
