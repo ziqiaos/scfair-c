@@ -2,27 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Advertisement Experiment</title>
+  <title>Advertising Study</title>
 
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      max-width: 800px;
+      text-align: center;
+      padding: 40px;
     }
 
     video {
-      width: 100%;
-      margin-bottom: 20px;
+      width: 80%;
+      max-width: 800px;
+      margin-bottom: 30px;
     }
 
-    .question {
-      margin-bottom: 20px;
-    }
-
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
+    #survey {
+      display: none;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -35,53 +32,38 @@
     The questionnaire will appear after the video finishes.
   </p>
 
-  <!-- Video -->
+  <!-- ⚠️ 视频：如果这是 AB 网站，用 A,B；如果是 C 网站，用 C -->
   <video id="adVideo" controls>
+    <source src="SCfair - trial A,B.mp4" type="video/mp4">
+    <!-- 如果是 C 网站，把上一行改成：
     <source src="SCfair - trial C.mp4" type="video/mp4">
+    -->
     Your browser does not support the video tag.
   </video>
 
-  <!-- Survey -->
-  <div id="survey" style="display:none;">
-    <h3>Questionnaire</h3>
+  <!-- 第二个 Google Form 问卷 -->
+  <div id="survey">
+    <h2>Questionnaire</h2>
 
-    <div class="question">
-      <p>1. How persuasive did you find this advertisement?</p>
-      <label><input type="radio" name="q1"> Not persuasive at all</label><br>
-      <label><input type="radio" name="q1"> Slightly persuasive</label><br>
-      <label><input type="radio" name="q1"> Moderately persuasive</label><br>
-      <label><input type="radio" name="q1"> Very persuasive</label><br>
-      <label><input type="radio" name="q1"> Extremely persuasive</label>
-    </div>
-
-    <div class="question">
-      <p>2. How clear was the message of the advertisement?</p>
-      <label><input type="radio" name="q2"> Very unclear</label><br>
-      <label><input type="radio" name="q2"> Somewhat unclear</label><br>
-      <label><input type="radio" name="q2"> Neutral</label><br>
-      <label><input type="radio" name="q2"> Clear</label><br>
-      <label><input type="radio" name="q2"> Very clear</label>
-    </div>
-
-    <div class="question">
-      <p>3. How likely are you to engage with the advertised product or service?</p>
-      <label><input type="radio" name="q3"> Very unlikely</label><br>
-      <label><input type="radio" name="q3"> Unlikely</label><br>
-      <label><input type="radio" name="q3"> Neutral</label><br>
-      <label><input type="radio" name="q3"> Likely</label><br>
-      <label><input type="radio" name="q3"> Very likely</label>
-    </div>
-
-    <button>Submit</button>
+    <iframe
+      src="https://docs.google.com/forms/d/e/1FAIpQLSc8K3BKy-zLHWyMt-QmBSDGxn3wtw3fTzpk8qbxAWI3mEGo5A/viewform?embedded=true"
+      width="640"
+      height="1200"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">
+      Loading…
+    </iframe>
   </div>
 
   <script>
     const video = document.getElementById("adVideo");
     const survey = document.getElementById("survey");
 
-    video.addEventListener("ended", function () {
+    video.onended = function () {
       survey.style.display = "block";
-    });
+      survey.scrollIntoView({ behavior: "smooth" });
+    };
   </script>
 
 </body>
